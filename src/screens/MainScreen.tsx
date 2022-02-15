@@ -1,12 +1,12 @@
 import React from 'react';
-import DaysList from '../components/DaysList';
+import TasksList from '../components/TasksList';
 import TimerHeader from '../components/TimerHeader';
 
 const MainScreen = () => {
   return (
     <>
       <TimerHeader />
-      <DaysList />
+      <TasksList />
     </>
   );
 };

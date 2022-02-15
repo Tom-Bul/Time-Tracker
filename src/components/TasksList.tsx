@@ -1,13 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useState} from 'react';
-import {FlatList, ListRenderItem, Text} from 'react-native';
+import {FlatList, ListRenderItem, Text, View} from 'react-native';
 
 import {setInit, updateTimer} from '../redux/userDataSlice';
 import {Task} from '../utilities/types';
 import {useAppDispatch, useAppSelector} from '../redux/hooks';
 import TaskContainer from './TaskContainer';
 
-const DaysList = () => {
+const TasksList = () => {
   const {tasks} = useAppSelector(state => state.userData);
   const dispatch = useAppDispatch();
   const [userData, setUserData] = useState<Task[] | undefined>();
@@ -42,8 +42,10 @@ const DaysList = () => {
   return userData && Object.keys(userData).length !== 0 ? (
     <FlatList data={userData} renderItem={renderTask} />
   ) : (
-    <Text>elo</Text>
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>List is empty</Text>
+    </View>
   );
 };
 
-export default DaysList;
+export default TasksList;
